@@ -1,3 +1,3 @@
-# EvelienVB.github.io
+# evelien-vb.github.io
 
 This repository has all files related to the github page which hosts my portfolio.
