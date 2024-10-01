@@ -18,25 +18,22 @@ def get_wiki_str(year,specific_word):
 
         for ul_tag in soup.findAll("ul"):
             for li_tag  in ul_tag.find_all('li'):        
-                try:
-                    a_tag = li_tag.find('a',href=True)['href']
-                    if re.search('wiki/\d{1,2}',a_tag).group():
-                        date_tag=a_tag.replace('/wiki/','').replace('_',' ')              
+                a_tag = li_tag.find('a',href=True)['href']
+                if re.search('wiki/\d{1,2}',a_tag):
+                    date_tag=a_tag.replace('/wiki/','').replace('_',' ')            
 
-                        n_month_new = next(n for n,month in enumerate(month_list) if month in date_tag)
-                        if n_month_new<n_month_old:
-                            break_loop = True
-                            break
+                    n_month_new = next((n for n,month in enumerate(month_list) if month in date_tag),-1)
+                    if n_month_new>0 and n_month_new<n_month_old:
+                        break_loop = True
+                        break
 
-                        event_tag = re.sub(r'^[0-9]+\s[-|–]', " ", li_tag.text.strip())
-                        n_month_old = n_month_new
+                    event_tag = re.sub(r'^[0-9]+\s[-|–]', " ", li_tag.text.strip())
+                    n_month_old = n_month_new
 
-                        if specific_word.lower() in event_tag.lower():
-                            df_events.loc[len(df_events)]=[date_tag,event_tag]
-                except:
-                    text=0
+                    if specific_word.lower() in event_tag.lower():
+                        df_events.loc[len(df_events)]=[date_tag,event_tag]
 
-            if break_loop==True:
+            if break_loop:
                 break
     
     wiki_str=''
@@ -51,14 +48,11 @@ def get_wiki_str(year,specific_word):
         
         event_str_html=''
         for word in event_str.split():
-            print(word)
             if specific_word.lower() in word.lower():
                 event_str_html = event_str_html+' '+'<mark>' + word + '</mark>'
             else:
                 event_str_html = event_str_html+' '+word
         wiki_str=wiki_str + '<h1>'+date_str+':'+event_str_html.strip() +'<h1>'
     
-
-    print(wiki_str)
     return wiki_str
     
