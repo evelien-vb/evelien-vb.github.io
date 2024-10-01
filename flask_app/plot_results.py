@@ -80,19 +80,14 @@ def get_ml_results_str(results,word):
     
     results_str = '<h1> Resulaten van de machine learning berekeningen: <h1>'
     for i,np_i in enumerate(np_title_list):
-
-         
          recall_result = list(cm_test_norm[i][:])
-         print(recall_result[0])
          recall_result_max = recall_result.copy()
          recall_result_max.pop(i)
 
          max_dif_class = max(recall_result_max)
          dif_np = np_title_list[recall_result.index(max_dif_class)]
          results_str = results_str + '<h1>' + str(round(recall_result[i]*100,2)) +'% van de artikelen uit '+ np_i + ' zijn correct geclassificeerd.'+str(round(max_dif_class*100,2)) + '% van de artikelen uit '+np_i + ' zijn geclassificeerd als ' + dif_np +'.<h1>'
-         print(results_str)
     
-    print(results_str)    
     return results_str
 
 def get_ml_results_plot(results,word):
@@ -113,9 +108,7 @@ def get_ml_results_plot(results,word):
         for j,np_j in enumerate(np_title_list):
             df_cm_temp.iloc[j][np_i] = cm_test_norm[i][j]
             
-    print(df_cm_temp)
     df_cm = pd.DataFrame(columns=np_title_list)
-    print(df_cm_temp.loc['het algemeen dagblad'])
     df_cm.loc['de volkskrant']=df_cm_temp.loc['de volkskrant'].copy()
     df_cm.loc['trouw']=df_cm_temp.loc['trouw'].copy()
     df_cm.loc['het algemeen dagblad']=df_cm_temp.loc['het algemeen dagblad'].copy()
