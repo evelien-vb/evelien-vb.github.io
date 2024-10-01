@@ -7,3 +7,4 @@ beautifulsoup4==4.12.3
 regex==2024.9.11
 Frozen-Flask==1.0.2
 gunicorn==23.0.0
+lxml==5.3.0

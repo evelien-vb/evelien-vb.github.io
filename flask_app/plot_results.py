@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy 
+import numpy as np 
 import json
 
 import plotly as px
@@ -76,7 +76,7 @@ def get_ml_results_str(results,word):
     np_title_list = ['het algemeen dagblad','de telegraaf','de volkskrant','trouw']
     cm_test= results[word]['ml_results']['Test results']['cm']
    
-    cm_test_norm = cm_test/ cm_test.astype(numpy.float).sum(axis=0)
+    cm_test_norm = cm_test/ cm_test.sum(axis=0)
     
     results_str = '<h1> Resulaten van de machine learning berekeningen: <h1>'
     for i,np_i in enumerate(np_title_list):
@@ -105,7 +105,7 @@ def get_ml_results_plot(results,word):
     np_title_list = ['het algemeen dagblad','de telegraaf','de volkskrant','trouw']
     
     cm_test= results[word]['ml_results']['Test results']['cm']
-    cm_test_norm = cm_test/ cm_test.astype(numpy.float).sum(axis=0)
+    cm_test_norm = cm_test/ cm_test.sum(axis=0)
     df_cm_temp = pd.DataFrame(columns=np_title_list,index=np_title_list)
 
     
