@@ -41,5 +41,5 @@ def index():
     return render_template('index.html',words = words,plot_word_count=plot_word_count,plot_word_use = plot_word_use, year_sent=year_most_used,wiki_str=wiki_str,plot_ml_result=plot_ml_result) 
     
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
 
