@@ -17,10 +17,11 @@ def get_wiki_str(year,specific_word):
         break_loop = False
 
         for ul_tag in soup.findAll("ul"):
-            for li_tag  in ul_tag.find_all('li'):        
-                a_tag = li_tag.find('a',href=True)['href']
-                if re.search('wiki/\d{1,2}',a_tag):
-                    date_tag=a_tag.replace('/wiki/','').replace('_',' ')            
+            for li_tag  in ul_tag.find_all('li'):   
+                a_tag = li_tag.find('a',href=True)
+                if a_tag and re.search('wiki/\d{1,2}',a_tag['href']):
+
+                    date_tag=a_tag['href'].replace('/wiki/','').replace('_',' ')            
 
                     n_month_new = next((n for n,month in enumerate(month_list) if month in date_tag),-1)
                     if n_month_new>0 and n_month_new<n_month_old:
