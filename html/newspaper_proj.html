@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <link href="../css/styles.css" rel="stylesheet">
-   
+
   </head>
   <body>
 
@@ -13,11 +13,11 @@
     <h1> Investigating language use in Dutch newspapers</h1>
 
     <div class=summary-container>
-    This project was started as the final project for an after work data science course I took from <a class="hyplink" href="https://www.allwomen.tech/">allWomen</a> academy (<a class="hyplink" href="https://www.allwomen.tech/academy/data-science-remote-part-time/">course content</a>), 
-    a cool company from Barcelona which wants to bring more female talent to tech industry. 
-    The final project took 6 weeks after which the first version of the project was finished which is presented at this page. After the course I extended the project 
-    where I focused more on the data visualization which documentation will be added later. 
-  </div> 
+    This project was started as the final project for an after work data science course I took from <a class="hyplink" href="https://www.allwomen.tech/">allWomen</a> academy (<a class="hyplink" href="https://www.allwomen.tech/academy/data-science-remote-part-time/">course content</a>),
+    a cool company from Barcelona which wants to bring more female talent to tech industry.
+    The final project took 6 weeks after which the first version of the project was finished which is presented at this page. After the course I extended the project
+    where I focused more on the data visualization which documentation will be added later.
+  </div>
 
   <div class=tools-container>
     <p>Language: Python <br>
@@ -30,7 +30,7 @@
 
   <h2>Motivation </h2>
   <div class=main-text-container>
-  
+
     In the Netherlands newspapers have political affilations. When the voting behavior in 2015 of the readers of
     four major newspapers in the Netherlands is considered this is clearly shown   [<a class="hyplink-source" href=#source_1>1</a>,<a class="hyplink-source" href=#source_2>2</a>].
 
@@ -38,48 +38,48 @@
 
     <p><img src="../images/newspaper_proj/voting_behaviour.svg" alt="Voting behaviour"></p>
 
-    Research has also shown that more than 50% of the Dutch people think that traditional media such as newspapers are polarizing  <a class="hyplink-source" href=#source_3>[3]</a>. 
+    Research has also shown that more than 50% of the Dutch people think that traditional media such as newspapers are polarizing  <a class="hyplink-source" href=#source_3>[3]</a>.
     So there is consensus that there are differences between newspapers however little research has been done in looking in detail at these actual differences
-    <a class="hyplink-source" href=#source_4>[4]</a>. I found this interesting and therefore focused on the language use in four major Dutch newspapers. 
-    Since the polarising society seem to be a current topic I also wanted to see if I could find how differences changed historically.   
+    <a class="hyplink-source" href=#source_4>[4]</a>. I found this interesting and therefore focused on the language use in four major Dutch newspapers.
+    Since the polarising society seem to be a current topic I also wanted to see if I could find how differences changed historically.
   </div>
 
   <h2>Data source </h2>
-  <div class=main-text-container>   
-    <a class="hyplink" href="https://www.delpher.nl">Delpher</a> is a website from the Dutch Royal Library which contains millions of digitized newspapers. 
-    You can spend hours at this website browsing through newspapers from as early as 1610(!) up to 2005, looking up historical events or checking the 
+  <div class=main-text-container>
+    <a class="hyplink" href="https://www.delpher.nl">Delpher</a> is a website from the Dutch Royal Library which contains millions of digitized newspapers.
+    You can spend hours at this website browsing through newspapers from as early as 1610(!) up to 2005, looking up historical events or checking the
     front page of the day you were born. Through the Dutch Royal Library I got access to their historical newspaper collection such that I could get the metadata of all their newspapers. <br><br>
-    Since their collection is enormous I decided to focus on 4 major Dutch newspapers; <a class="hyplink" href="https://en.wikipedia.org/wiki/De_Volkskrant">de Volkskrant</a>, 
-    <a class="hyplink" href="https://en.wikipedia.org/wiki/Trouw">Trouw</a>, 
-    <a class="hyplink" href="https://en.wikipedia.org/wiki/Algemeen_Dagblad">Algemeen Dagblad</a>,  en 
+    Since their collection is enormous I decided to focus on 4 major Dutch newspapers; <a class="hyplink" href="https://en.wikipedia.org/wiki/De_Volkskrant">de Volkskrant</a>,
+    <a class="hyplink" href="https://en.wikipedia.org/wiki/Trouw">Trouw</a>,
+    <a class="hyplink" href="https://en.wikipedia.org/wiki/Algemeen_Dagblad">Algemeen Dagblad</a>,  en
     <a class="hyplink" href="https://en.wikipedia.org/wiki/De_Telegraaf">de Telegraaf</a> which on a political/public axis would be classified the following:<br>
 
     <p><img src="../images/newspaper_proj/newspaper_axis.svg" alt="Newspapers on axis"></p>
 
-    For a time period I focused on 1950 to 1995. From 1950 all chosen newspapers published with their current title, 1995 was the limit up to where data could be obtained 
-    from the Delpher/Dutch Royal Library database. Since the time available for the project was 6 weeks the amount of data was reduced by only focusing on articles on the front page. 
+    For a time period I focused on 1950 to 1995. From 1950 all chosen newspapers published with their current title, 1995 was the limit up to where data could be obtained
+    from the Delpher/Dutch Royal Library database. Since the time available for the project was 6 weeks the amount of data was reduced by only focusing on articles on the front page.
 
   </div>
 
   <h2> Approach </h2>
 
-  <div class=main-text-container>  
+  <div class=main-text-container>
 
     <p><img src="../images/newspaper_proj/overview_proj.svg" alt="Newspapers on axis"></p>
 
-    To understand the differences in language use I decided to build a multi-class classification model which could predict the newspaper title from the article text. 
-    The hypothesis was that if the model will produce good metrics it would mean that there are differences in the language use which can then be further studied. 
+    To understand the differences in language use I decided to build a multi-class classification model which could predict the newspaper title from the article text.
+    The hypothesis was that if the model will produce good metrics it would mean that there are differences in the language use which can then be further studied.
     To get historical trends I would run the model for each year and look at differences over time.
 
   </div>
 
   <h2>Obtaining the data </h2>
-  <div class=main-text-container> 
-    
+  <div class=main-text-container>
+
     With a search API issue IDs from the historical newspaper collection were otained where each newspaper title (de Volkskrant, het Algemeen Dagblad,Trouw, de Telegraaf)
     was identified with a set ID. Each issue, for example  <a class="hyplink" href="https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=ABCDDD:010847972:mpeg21">
-    de Volkskrant from 21st of July 1969</a>, has metadata on issue,page and article level stored in XML format. For each level relevant metadat was obtained which was then 
-    stored in a local database. Even though in the project I was only looking at the frontpage of the newspapers I wanted to keep the option open to look get other 
+    de Volkskrant from 21st of July 1969</a>, has metadata on issue,page and article level stored in XML format. For each level relevant metadat was obtained which was then
+    stored in a local database. Even though in the project I was only looking at the frontpage of the newspapers I wanted to keep the option open to look get other
     pages in a later stage. Therefore I created a relational database with postgreSQL which was managed with DBeaver with the following layout, where
     the issue id was the primary key. <br><br>
 
@@ -123,73 +123,73 @@
       </tr>
 
       <tr>
-       
+
       </tr>
     </table>
-    <br> 
+    <br>
    The database was queried in Python to store the data in a pandas dataframe to be further processed.
 
   </div>
 
   <h2>Data exploration and data cleaning </h2>
 
-  <div class=main-text-container>  
+  <div class=main-text-container>
 
-    The number of frontpages per newspaper is quite constant over the years with the exception of 1950 and 1995. 
+    The number of frontpages per newspaper is quite constant over the years with the exception of 1950 and 1995.
 
 
-    The main data source was the text of articles on the front page obtained with OCR by the Dutch Royal Library. The quality of the OCR was sometimes not good 
+    The main data source was the text of articles on the front page obtained with OCR by the Dutch Royal Library. The quality of the OCR was sometimes not good
     because it was for example close to the edge of a frontpage. Therefore the first task was to clean the data and remove articles for which the quality was not sufficient.
-    The quality was defined by dividing the total number of valid dutch words and names by the total number of words in an article. If this parameter was below .. the 
+    The quality was defined by dividing the total number of valid dutch words and names by the total number of words in an article. If this parameter was below .. the
     article was discarded. The data was further cleaned by taking out main Dutch stopwords as well as newspaper specific stopwords such as 'page' and 'from our editor'. <br> <br>
-    Next numerical features which could be derived from the text were determined. It was thought that if there were large differences between newspapers 
+    Next numerical features which could be derived from the text were determined. It was thought that if there were large differences between newspapers
     for the numerical features they could be used to classify the newspapers. The following numerical parameters are shown here:<br>
     # of words = number of words per article <br>
     avg len words = the average length of words in an article <br>
     stopword ratio = the number of stopwords/total number of words in an article
- 
+
     <p><img src="../images/newspaper_proj/num_features.svg" alt="Numerical features "></p>
-  
-  The largest differences were found in the number of words per article when this parameter was used to build a classification model the performance was very low. 
+
+  The largest differences were found in the number of words per article when this parameter was used to build a classification model the performance was very low.
   Also with the other numerical parameters no good performance was obtained so therefore the focus was then only on the text data.
 
 
 
-  </div> 
+  </div>
 
   <h2>Modeling and results</h2>
-  <div class=main-text-container>  
+  <div class=main-text-container>
 
-    When the data was cleaned and it was attempted to apply a model to all data it was found that my computer could not handle 700000 articles at once. 
+    When the data was cleaned and it was attempted to apply a model to all data it was found that my computer could not handle 700000 articles at once.
     Therefore I decided to analyse the data per year, which was also handy because I wanted to look at historical trends. Because the number of articles
     per newspaper was not balanced first the data was undersampled to have the same amount of articles per newspaper.
-   With the balanced/cleaned data and after splitting the data in a training and test set different classification models were applied by using the sci-kitlearn package in Python and the performance, from the 
-    confusion matrix, was assessed. 
+   With the balanced/cleaned data and after splitting the data in a training and test set different classification models were applied by using the sci-kitlearn package in Python and the performance, from the
+    confusion matrix, was assessed.
     The model consisted of two parts. <br>
     <ul>
-      <li> A vectorizer which counted the number of times a word appeared in an article. For the vectorizer a Tfidf 
-        vectorizer was used such that words which appear in each article have a smaller weight than unique words in an article. </li>  
+      <li> A vectorizer which counted the number of times a word appeared in an article. For the vectorizer a Tfidf
+        vectorizer was used such that words which appear in each article have a smaller weight than unique words in an article. </li>
       <li> A classification algorithm. The following algorithms were applied: Logistic regression/Decision tree/Random Forest/K-nearest-neighbour/Support vector machine.</li>
     </ul>
-    
-    The hyperparameters of the algorithms such as for example the number of words for the vectorizer or the number of levels for the decision tree were tuned by using GridSearch 
-    with crossvalidation to make sure that the performance was indicative for the entire dataset and not a subset. Often the performancce was a lot higher for the 
-    training set compared to the test set which indicataed overfitting. Eventually, a linear support vector machine gave the best performance after hyperparameter tuning and 
+
+    The hyperparameters of the algorithms such as for example the number of words for the vectorizer or the number of levels for the decision tree were tuned by using GridSearch
+    with crossvalidation to make sure that the performance was indicative for the entire dataset and not a subset. Often the performancce was a lot higher for the
+    training set compared to the test set which indicataed overfitting. Eventually, a linear support vector machine gave the best performance after hyperparameter tuning and
     this algorithm was then applied to the entire dataset. <br><br>
     The accuracy was on average 65% for the test data which I thought was quite high given that just the text of an article was the input data. Next to the accuracy
-    also the recall was assessed per newspaper. The recall is defined as the ratio between the true positves and the sum of the true positives and false negatives. When for 
-    example the Volkskrant is considered and the recall would be 76% it means that 76% of all Volkskrant articles were predicted as the Volkskrant while the other 24% was 
-    labeled as another newspaper. It was then interesting to look how this 24% was distributed over the other newspapers. Were most Trouw articles classified as the Volkskrant as would be 
+    also the recall was assessed per newspaper. The recall is defined as the ratio between the true positves and the sum of the true positives and false negatives. When for
+    example the Volkskrant is considered and the recall would be 76% it means that 76% of all Volkskrant articles were predicted as the Volkskrant while the other 24% was
+    labeled as another newspaper. It was then interesting to look how this 24% was distributed over the other newspapers. Were most Trouw articles classified as the Volkskrant as would be
     expected from the axis above? Here the recall of the Volkskrant is shown for each of the analysed years together with how the distribution of newspapers was of the articles predicted incorrectly.
-    
+
     <p><img src="../images/newspaper_proj/results_ml.svg" alt="Results ml"></p>
-  
-   First of all it is shown that the recall stays quite constant over the years. Up to 1960 the misclassified Volkskrant articles get classified evenly between Trouw, Algemeen Dagblad 
+
+   First of all it is shown that the recall stays quite constant over the years. Up to 1960 the misclassified Volkskrant articles get classified evenly between Trouw, Algemeen Dagblad
    and Telegraaf. From 1960 the articles get more classified as Trouw which increases rapidly around 1970. It was found that around this time
-   there were changes in the signature of Trouw <a class="hyplink-source" href=#source_5>[5]</a>. It distanced itself from being an orthodox-protestant newspaper, as it was set up in the second world war. This changed the number of readers 
+   there were changes in the signature of Trouw <a class="hyplink-source" href=#source_5>[5]</a>. It distanced itself from being an orthodox-protestant newspaper, as it was set up in the second world war. This changed the number of readers
    and the target group. It is interesting that these events seems to be observed in this analysis indicating that part of the new signature might also have been different use of language or topics. <br> <br>
    Next to the recall it was then interesting to look at which words were actually most determinative for the classification. Here the 10 words with the highest importance are shown (of course translated from Dutch to English):
-  
+
    <p><img src="../images/newspaper_proj/important_words.svg" alt="important words"></p>
 
    The words are quite general. Maybe some newspapers would use more quotes indicated by "said" and "according" but it is difficult to really draw conclusions from this. <br> <br>
@@ -202,13 +202,13 @@
   </div>
 
   <h2>Flask app</h2>
-  <div class=main-text-container>  
-  After the machine learning models were applied another question arised; <br> <i>How can the results be made more intuitive and useful 
+  <div class=main-text-container>
+  After the machine learning models were applied another question arised; <br> <i>How can the results be made more intuitive and useful
   for a reader to inform themselves about biases in different newspapers?</i> <br><br>
   The answer to this question was a <a class="hyplink" href="https://evelien-vb-github-io.onrender.com/">
   Flask app</a> (in Dutch) where people can look for a word (for example a Dutch political party) and find out the following: <br>
   <ul>
-    <li>How many times does a newspapers mentioned the chosen word on their frontpage  over time?</li>  
+    <li>How many times does a newspapers mentioned the chosen word on their frontpage  over time?</li>
     <li> In which year was the mentioned most times? And which events related to the chosen word occured (found by scraping wikipedia)?</li>
     <li> How well are the newspaper articles with this word classified?</li>
     <li>Which words were most determinative for the classification?</li>
@@ -218,20 +218,20 @@
   </div>
 
   <h2>Further steps</h2>
-  <div class=main-text-container>  
-    After the 6 weeks the project was finished. By looking at specific words or people it was found that some newspapers refer to people differently. To focus more 
+  <div class=main-text-container>
+    After the 6 weeks the project was finished. By looking at specific words or people it was found that some newspapers refer to people differently. To focus more
     on the political aspect of newspapers as a next step the articles which mention a minister or prime ministers were obtained and it was studied in more detail how different newspapers refer to these people.
     At the moment an interactive visualization about these results is created.
   </div>
 
   <h2>What I have learned</h2>
-  <div class=main-text-container>  
+  <div class=main-text-container>
   This was my first machine learning project which I did from start to end so this was a whole learning experience by itself. Also documenting the project
-  and creating a portfolio with html/css and deploying an app with render is something I have learned. Finally, I learned that visualizing the results in an intuitive and useful way requires a lot of 
-  thinking before actually creating the plots. 
+  and creating a portfolio with html/css and deploying an app with render is something I have learned. Finally, I learned that visualizing the results in an intuitive and useful way requires a lot of
+  thinking before actually creating the plots.
   </div>
 
-  <p> 
+  <p>
     <h3>Sources</h3>
     [1] <a id=source_1 class="hyplink" href="https://nl.wikipedia.org/wiki/Politiek_spectrum"> https://nl.wikipedia.org/wiki/Politiek_spectrum</a><br>
     [2] <a  id=source_2 class="hyplink" href=>https://www.ad.nl/binnenland/wat-stemmen-krantenlezers~a655e176/</a><br>
