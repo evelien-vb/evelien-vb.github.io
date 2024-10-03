@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:)</title>
+	<style>
+		body {background-color: black;}
+		h1   {color: white;font-family: Helvetica}}
+		p    {font-family: Helvetica;font-size: 20px;background-color:black;color:white
+	</style>
+</head>
+
+
+<body>
+
+<center>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1>Word use in Dutch newspapers</h1>
+
+<form action="" method="get">
+<select name= word_box method="GET" action="/" style="font-family: Helvetica;font-size: 20px;background-color:black;color:white">
+	<option value="">--Choose a word--</option>
+    {% for word in words %}
+    <option value= "{{word}}">{{ word }} </option>"
+    {% endfor %}
+	</optgroup>
+</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+ <br> <br> <br>
+ <input type="submit" value="Submit" style="font-family: Helvetica;font-size: 25px;background-color:black;color:white">
+ </form>
+
+</center>
+</body>
+</html>
